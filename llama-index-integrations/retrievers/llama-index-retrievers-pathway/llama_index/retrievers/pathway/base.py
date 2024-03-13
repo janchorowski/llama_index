@@ -58,7 +58,6 @@ class _VectorStoreClient:
                 in the JMESPath format. The search will happen only for documents
                 satisfying this filtering.
         """
-
         data = {"query": query, "k": k}
         if metadata_filter is not None:
             data["metadata_filter"] = metadata_filter
@@ -77,7 +76,6 @@ class _VectorStoreClient:
 
     def get_vectorstore_statistics(self) -> dict:
         """Fetch basic statistics about the vector store."""
-
         url = self.url + "/v1/statistics"
         response = requests.post(
             url,
