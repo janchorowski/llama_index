@@ -16,7 +16,7 @@ from llama_index.core.schema import (
 
 
 # Copied from https://github.com/pathwaycom/pathway/blob/main/python/pathway/xpacks/llm/vector_store.py
-# to remove dependency on Pathway library.
+# to remove dependency on Pathway library when only the client is used.
 class _VectorStoreClient:
     def __init__(
         self,
@@ -27,7 +27,7 @@ class _VectorStoreClient:
         """
         A client you can use to query :py:class:`VectorStoreServer`.
 
-        Please provide aither the `url`, or `host` and `port`.
+        Please provide either the `url`, or `host` and `port`.
 
         Args:
             - host: host on which `:py:class:`VectorStoreServer` listens
@@ -82,8 +82,7 @@ class _VectorStoreClient:
             json={},
             headers={"Content-Type": "application/json"},
         )
-        responses = response.json()
-        return responses
+        return response.json()
 
     def get_input_files(
         self,
@@ -109,12 +108,12 @@ class _VectorStoreClient:
             },
             headers={"Content-Type": "application/json"},
         )
-        responses = response.json()
-        return responses
+        return response.json()
 
 
 class PathwayRetriever(BaseRetriever):
     """Pathway retriever.
+
     Pathway is an open data processing framework.
     It allows you to easily develop data transformation pipelines
     that work with live data sources and changing data.
